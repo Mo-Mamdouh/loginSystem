@@ -6,16 +6,23 @@ login.addEventListener('submit', function (e) {
         loginEmail:document.getElementById('Email1').value,
         loginPass:document.getElementById('Password1').value
     }
+    let emailCheck =false;
     for (var i = 0; i < db.length; i++) {
         if (ltemp.loginEmail==db[i].email && ltemp.loginPass==db[i].pass) {
+            emailCheck=true;
+        }
+        }
+        if (emailCheck) {  
             window.location.href="home.html";
         }
         else{
-            var feedback=`
-                <div class="my-2 text-danger">
-                        <i class="fa fa-warning"></i> email or password might be wrong.
-                </div>`
-            document.getElementById('feedback').innerHTML=feedback;
+            var cartona=`
+            <div class="alert alert-danger my-3" role="alert">
+            email or password might be wrong
+            </div>
+        `
+        document.getElementById('feedback').innerHTML=cartona;
         }
+       
     }
-})
+)
